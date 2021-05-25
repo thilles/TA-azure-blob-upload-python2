@@ -1,0 +1,150 @@
+{
+    "meta": {
+        "version": "1.0.0", 
+        "restRoot": "TA_azure_blob_upload", 
+        "apiVersion": "3.0.0", 
+        "displayName": "Azure Blob Upload", 
+        "name": "TA-azure-blob-upload"
+    }, 
+    "pages": {
+        "configuration": {
+            "tabs": [
+                {
+                    "entity": [
+                        {
+                            "field": "proxy_enabled", 
+                            "label": "Enable", 
+                            "type": "checkbox"
+                        }, 
+                        {
+                            "defaultValue": "http", 
+                            "field": "proxy_type", 
+                            "label": "Proxy Type", 
+                            "type": "singleSelect", 
+                            "options": {
+                                "autoCompleteFields": [
+                                    {
+                                        "value": "http", 
+                                        "label": "http"
+                                    }, 
+                                    {
+                                        "value": "socks4", 
+                                        "label": "socks4"
+                                    }, 
+                                    {
+                                        "value": "socks5", 
+                                        "label": "socks5"
+                                    }
+                                ], 
+                                "disableSearch": true
+                            }
+                        }, 
+                        {
+                            "field": "proxy_url", 
+                            "label": "Host", 
+                            "type": "text", 
+                            "validators": [
+                                {
+                                    "errorMsg": "Max host length is 4096", 
+                                    "minLength": 0, 
+                                    "maxLength": 4096, 
+                                    "type": "string"
+                                }
+                            ]
+                        }, 
+                        {
+                            "field": "proxy_port", 
+                            "label": "Port", 
+                            "type": "text", 
+                            "validators": [
+                                {
+                                    "range": [
+                                        1, 
+                                        65535
+                                    ], 
+                                    "type": "number"
+                                }
+                            ]
+                        }, 
+                        {
+                            "field": "proxy_username", 
+                            "label": "Username", 
+                            "type": "text", 
+                            "validators": [
+                                {
+                                    "errorMsg": "Max length of username is 50", 
+                                    "minLength": 0, 
+                                    "maxLength": 50, 
+                                    "type": "string"
+                                }
+                            ]
+                        }, 
+                        {
+                            "validators": [
+                                {
+                                    "errorMsg": "Max length of password is 8192", 
+                                    "minLength": 0, 
+                                    "maxLength": 8192, 
+                                    "type": "string"
+                                }
+                            ], 
+                            "field": "proxy_password", 
+                            "label": "Password", 
+                            "type": "text", 
+                            "encrypted": true
+                        }, 
+                        {
+                            "field": "proxy_rdns", 
+                            "label": "Remote DNS resolution", 
+                            "type": "checkbox"
+                        }
+                    ], 
+                    "options": {
+                        "saveValidator": "function(formData) { if(!formData.proxy_enabled || formData.proxy_enabled === '0') {return true; } if(!formData.proxy_url) { return 'Proxy Host can not be empty'; } if(!formData.proxy_port) { return 'Proxy Port can not be empty'; } return true; }"
+                    }, 
+                    "title": "Proxy", 
+                    "name": "proxy"
+                }, 
+                {
+                    "entity": [
+                        {
+                            "defaultValue": "INFO", 
+                            "field": "loglevel", 
+                            "label": "Log level", 
+                            "type": "singleSelect", 
+                            "options": {
+                                "autoCompleteFields": [
+                                    {
+                                        "value": "DEBUG", 
+                                        "label": "DEBUG"
+                                    }, 
+                                    {
+                                        "value": "INFO", 
+                                        "label": "INFO"
+                                    }, 
+                                    {
+                                        "value": "WARNING", 
+                                        "label": "WARNING"
+                                    }, 
+                                    {
+                                        "value": "ERROR", 
+                                        "label": "ERROR"
+                                    }, 
+                                    {
+                                        "value": "CRITICAL", 
+                                        "label": "CRITICAL"
+                                    }
+                                ], 
+                                "disableSearch": true
+                            }
+                        }
+                    ], 
+                    "title": "Logging", 
+                    "name": "logging"
+                }
+            ], 
+            "title": "Configuration", 
+            "description": "Set up your add-on"
+        }
+    }
+}

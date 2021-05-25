@@ -1,0 +1,8 @@
+[props/source%3A%3A...upload_to_azure_blob_modalert.log%2A]
+owner = admin
+version = 7.3.0
+modtime = 1572353679.751528000
+
+[ta_azure_blob_upload_settings/proxy]
+version = 7.3.0
+modtime = 1572355306.883782000
